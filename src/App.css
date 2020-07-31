@@ -1,0 +1,150 @@
+.App {
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'GhastlyPanic';
+  src: url('./Assets/Fonts/GhastlyPanic.ttf') format('truetype'),
+    url('./Assets/Fonts/ghastly_panic-webfont.woff2') format('woff2'),
+    url('./Assets/Fonts/ghastly_panic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  margin-bottom: 5vh;
+}
+
+@media only screen and (max-width: 320px) {
+  .container {
+    margin-top: 30%;
+  }
+  #searchForm {
+    justify-content: center;
+  }
+  #homeLink {
+    font-size: 35px;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .container {
+    margin-top: 25%;
+  }
+  #searchForm {
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    margin-top: 13%;
+  }
+  #searchForm {
+    margin-bottom: 1vh;
+  }
+  .productContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .container {
+    margin-top: 10%;
+  }
+  .productContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container {
+    margin-top: 7%;
+  }
+  .productContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 10px;
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (min-width: 2560px) {
+  .container {
+    margin-top: 4%;
+  }
+  .productContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 10px;
+  }
+}
+
+.cartContainer {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.toast {
+  z-index: 2;
+}
+
+.card-header {
+  font-size: 16px;
+}
+
+#root > div > div > div > div > ul > li,
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#root > div > div > div > div > ul > li#emptyCartNotif {
+  justify-content: center;
+}
+#root > div > div > div > div > ul > li#cartTotal {
+  justify-content: flex-end;
+}
+
+.card > .card-body > .card-text {
+  font-size: 12px;
+}
+
+#navHeader {
+  font-family: 'GhastlyPanic';
+  font-weight: 300;
+  font-size: 40px;
+}
+#notFound,
+#thanks {
+  font-family: 'GhastlyPanic';
+  font-weight: 500;
+  font-size: 80px;
+}
+
+#homeLink {
+  color: white;
+}
+
+#homeLink:hover {
+  text-decoration: none;
+}
+
+#cartHeader {
+  font-family: 'GhastlyPanic';
+  font-weight: 300;
+  font-size: 80px;
+}
+
+#invalidSearch {
+  justify-content: center;
+}
+
+#navbarSupportedContent {
+  justify-content: flex-end;
+}
