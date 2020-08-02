@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
-import ProductAddView from "../Components/ProductAddView";
+import React, { useState } from 'react';
+import axios from 'axios';
+import ProductAddView from '../Components/ProductAddView';
 
 const Inventory = (props) => {
   const [products, setProducts] = useState([]);
@@ -17,31 +17,33 @@ const Inventory = (props) => {
     stockQty,
     stripePrice
   ) => {
+    const params = {
+      name: name,
+      description: description,
+      heat: heat,
+      flavor: flavor,
+      price: price,
+      image: image,
+      tag: tag,
+      stockQty: stockQty,
+      stripePrice: stripePrice,
+    };
+
     axios
-      .post("/api/product", {
-        name,
-        description,
-        heat,
-        flavor,
-        price,
-        image,
-        tag,
-        stockQty,
-        stripePrice,
-      })
+      .post('http://localhost:8080/products', params)
       .then((res) => {
         console.log(res);
-        alert("Product added successfully");
+        alert('Product added successfully');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err));
   };
 
   return (
     <div>
-        <button onClick={()=> setProductView(!productView)} >Add Product</button>
+      <button onClick={() => setProductView(!productView)}>Add Product</button>
       {productView ? (
         <div>
-          <ProductAddView addProduct={addProduct}/>
+          <ProductAddView addProduct={addProduct} />
         </div>
       ) : null}
     </div>
