@@ -30,7 +30,7 @@ const Inventory = (props) => {
     };
 
     axios
-      .post('http://localhost:8080/products', params)
+      .post('Capstone3-env-1.eba-zhpmpeyi.us-east-2.elasticbeanstalk.com/products', params)
       .then((res) => {
         console.log(res);
         alert('Product added successfully');
