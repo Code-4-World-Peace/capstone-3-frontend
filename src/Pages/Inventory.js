@@ -28,9 +28,13 @@ const Inventory = (props) => {
       stockQty: stockQty,
       stripePrice: stripePrice,
     };
-
-    axios
-      .post('https://178.128.149.181/products', params)
+ const instance = axios.create({
+      httpsAgent: new https.Agent({  
+        rejectUnauthorized: false
+      })
+    });
+    instance
+      .post('http://localhost:8080/products', params)
       .then((res) => {
         console.log(res);
         alert('Product added successfully');
