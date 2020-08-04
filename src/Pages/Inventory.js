@@ -34,7 +34,7 @@ const Inventory = (props) => {
       })
     });
     instance
-      .post('http://localhost:8080/products', params)
+      .post('https://178.128.149.181/products', params)
       .then((res) => {
         console.log(res);
         alert('Product added successfully');
