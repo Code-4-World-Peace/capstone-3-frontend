@@ -6,54 +6,40 @@ const ProductCardDisplay = (props) => {
     const { stock, products, addToCart, setShow, setToastBody } = props;
     const [displayBody] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         setDisplayProduct(products)
     })
 
     const setDisplayProduct = (products) => {
-        products.map((product)=>{
-            
-                
-            
-            switch(product) {
-                case product.name:
-                    displayBody.push(<h5 className='card-header'>{product.name}</h5>)
-                    break;
-                case product.stock:
-                    displayBody.push(<p className='card-text'>Stock: {product.stock}</p>)
-                    break;
-                case product.sku:
-                    displayBody.push(<p className='card-text'>
-                            <small>SKU: 00{product.sku}</small>
-                        </p>)
-                    break;
-                    
-            }        
-        }
-            ); 
-            
-        
+        products.map((product) => {
+            displayBody.push(<h5 className='card-header'>{product.name}</h5>)
+            displayBody.push(<p className='card-text'>Stock: {product.stock}</p>)
+            displayBody.push(<p className='card-text'>
+                <small>SKU: 00{product.sku}</small>
+            </p>)
+
+        });
     }
 
     const displayProduct = () => {
-        displayBody.map((product,i)=>{
+        displayBody.map((product, i) => {
             return (
                 <div className='card' key={products[i].sku} id={products[i].sku}>
-                <div>{product}</div> 
-                <button
-        className='btn btn-primary'
-        onClick={() => {
-         if (stock[i] >= 1) {
-          // Won't let user add item to cart if no stock is left
-          addToCart(i);
-          setToastBody(products[i].name);
-          setShow(true);
-         }
-        }}
-       >
-        Add to Cart
-       </button>
-       </div>
+                    <div>{product}</div>
+                    <button
+                        className='btn btn-primary'
+                        onClick={() => {
+                            if (stock[i] >= 1) {
+                                // Won't let user add item to cart if no stock is left
+                                addToCart(i);
+                                setToastBody(products[i].name);
+                                setShow(true);
+                            }
+                        }}
+                    >
+                        Add to Cart
+                    </button>
+                </div>
             )
         })
     }
