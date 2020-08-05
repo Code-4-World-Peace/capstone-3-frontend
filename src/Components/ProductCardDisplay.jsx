@@ -1,58 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const ProductCardDisplay = (props) => {
     const { stock, products, addToCart, setShow, setToastBody } = props;
+    const [displayBody] = useState([])
+
+    useEffect(()=>{
+        setDisplayProduct(products)
+    })
+
+    const setDisplayProduct = (products) => {
+        products.map((product)=>{
+            
+                
+            
+            switch(product) {
+                case product.name:
+                    displayBody.push(<h5 className='card-header'>{product.name}</h5>)
+                    break;
+                case product.stock:
+                    displayBody.push(<p className='card-text'>Stock: {product.stock}</p>)
+                    break;
+                case product.sku:
+                    displayBody.push(<p className='card-text'>
+                            <small>SKU: 00{product.sku}</small>
+                        </p>)
+                    break;
+                    
+            }        
+        }
+            ); 
+            
+        
+    }
+
+    const displayProduct = () => {
+        displayBody.map((product,i)=>{
+            return (
+                <div className='card' key={products[i].sku} id={products[i].sku}>
+                <div>{product}</div> 
+                <button
+        className='btn btn-primary'
+        onClick={() => {
+         if (stock[i] >= 1) {
+          // Won't let user add item to cart if no stock is left
+          addToCart(i);
+          setToastBody(products[i].name);
+          setShow(true);
+         }
+        }}
+       >
+        Add to Cart
+       </button>
+       </div>
+            )
+        })
+    }
+
+
+
     return (
         <div className='productContainer'>
             <div id='invalidSearch' style={{ display: 'none' }}>
                 No Search results found!
         </div>
-            {products.map((products, i) => {
-                // Map thru all the products and create a card for each of them
-                return (
-                    <div className='card' key={products.sku} id={products.sku}>
-                        <h5 className='card-header'>{products.name}</h5>
-                        <img
-                            src={products.image}
-                            className='card-img-top'
-                            alt={products.name}
-                            style={{ maxWidth: '200px', margin: 'auto' }}
-                        />
-                        <div className='card-body'>
-                            <h5 className='card-title'>${products.price}</h5>
-                            <p className='card-text'>
-                                {products.description}
-                                <br />
-                                {products.heat}
-                                <br />
-                                {products.flavor}
-                            </p>
-                            <p className='card-text'>Stock: {stock}</p>
-                            <p className='card-text'>
-                                <small>SKU: 00{products.sku}</small>
-                            </p>
-                            <button
-                                className='btn btn-primary'
-                                onClick={() => {
-                                    if (stock >= 1) {
-                                        // Won't let user add item to cart if no stock is left
-                                        addToCart(i);
-                                        setToastBody(products.name);
-                                        setShow(true);
-                                    }
-                                }}
-                            >
-                                Add to Cart
-                            </button>
-                            <p className='card-text'>
-                                <small>Tags: {products.tag} </small>
-                            </p>
-                        </div>
-                    </div>
-                );
-            })}
+            {displayProduct()}
         </div>
     );
 };
