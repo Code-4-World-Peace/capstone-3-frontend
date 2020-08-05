@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import ProductCardDisplay from "../Components/ProductCardDisplay";
 
 function Home({
   products,
@@ -60,55 +61,13 @@ function Home({
   setShowSearch(true); // Allow the search bar to be shown on this screen
 
   return (
-    <div className='productContainer'>
-      <div id='invalidSearch' style={{ display: 'none' }}>
-        No Search results found!
-      </div>
-      {products.map((product, i) => {
-        // Map thru all the products and create a card for each of them
-        return (
-          <div className='card' key={products[i].sku} id={products[i].sku}>
-            <h5 className='card-header'>{products[i].name}</h5>
-            <img
-              src={products[i].image}
-              className='card-img-top'
-              alt={products[i].name}
-              style={{ maxWidth: '200px', margin: 'auto' }}
-            />
-            <div className='card-body'>
-              <h5 className='card-title'>${products[i].price}</h5>
-              <p className='card-text'>
-                {products[i].description}
-                <br />
-                {products[i].heat}
-                <br />
-                {products[i].flavor}
-              </p>
-              <p className='card-text'>Stock: {stock[i]}</p>
-              <p className='card-text'>
-                <small>SKU: 00{products[i].sku}</small>
-              </p>
-              <button
-                className='btn btn-primary'
-                onClick={() => {
-                  if (stock[i] >= 1) {
-                    // Won't let user add item to cart if no stock is left
-                    addToCart(i);
-                    updateStock(i);
-                    setToastBody(products[i].name);
-                    setShow(true);
-                  }
-                }}
-              >
-                Add to Cart
-              </button>
-              <p className='card-text'>
-                <small>Tags: {products[i].tag} </small>
-              </p>
-            </div>
-          </div>
-        );
-      })}
+    <div>
+      <ProductCardDisplay
+        products={products}
+        setToastBody={setToastBody}
+        addToCart={addToCart}
+        setShow={setShow}
+      />
     </div>
   );
 }
