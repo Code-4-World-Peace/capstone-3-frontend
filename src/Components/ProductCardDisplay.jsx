@@ -8,24 +8,22 @@ const ProductCardDisplay = (props) => {
 
     useEffect(() => {
         setDisplayProduct(products)
-    })
+    },[])
 
     const setDisplayProduct = (products) => {
         products.map((product) => {
-            displayBody.push(<h5 className='card-header'>{product.name}</h5>)
-            displayBody.push(<p className='card-text'>Stock: {product.stock}</p>)
-            displayBody.push(<p className='card-text'>
-                <small>SKU: 00{product.sku}</small>
-            </p>)
-
+            displayBody.push(<h5 className='card-header'>{product.name}</h5>
+            <p className='card-text'>Stock: {product.stock}</p>
+            <p className='card-text'><small>SKU: 00{product.sku}</small></p>
+            )
         });
     }
 
     const displayProduct = () => {
-        displayBody.map((product, i) => {
+        displayBody.map((productHTML, i) => {
             return (
                 <div className='card' key={products[i].sku} id={products[i].sku}>
-                    <div>{product}</div>
+                    <div>{productHTML}</div>
                     <button
                         className='btn btn-primary'
                         onClick={() => {
