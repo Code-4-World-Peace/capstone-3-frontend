@@ -6,20 +6,17 @@ const Inventory = (props) => {
   const [products, setProducts] = useState([]);
   const [productView, setProductView] = useState(false);
 
-  const addProduct = (
-    name
-  ) => {
+  const addProduct = (name) => {
     const params = {
-      name
+      name,
     };
-    
+
     axios
       .post('http://localhost:8080/products', params)
       .then((res) => {
         console.log(res.data);
-        alert('Product added successfully');
       })
-      .catch(err => alert(err));
+      .catch((err) => console.log(err));
   };
 
   return (
