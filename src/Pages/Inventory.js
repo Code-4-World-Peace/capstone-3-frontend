@@ -7,35 +7,19 @@ const Inventory = (props) => {
   const [productView, setProductView] = useState(false);
 
   const addProduct = (
-    name,
-    description,
-    heat,
-    flavor,
-    price,
-    image,
-    tag,
-    stockQty,
-    stripePrice
+    name
   ) => {
     const params = {
-      name: name,
-      description: description,
-      heat: heat,
-      flavor: flavor,
-      price: price,
-      image: image,
-      tag: tag,
-      stockQty: stockQty,
-      stripePrice: stripePrice,
+      name
     };
     
     axios
-      .post('http://206.189.192.134:8080/products', params)
+      .post('http://localhost:8080/products', params)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         alert('Product added successfully');
       })
-      .catch((err) => alert(err));
+      .catch(err => alert(err));
   };
 
   return (
