@@ -30,7 +30,7 @@ const Inventory = (props) => {
     };
 
     axios
-      .post('http://localhost:8080/products', params)
+      .post('http://206.189.192.134:8080/products', params)
       .then((res) => {
         console.log(res);
         alert('Product added successfully');
