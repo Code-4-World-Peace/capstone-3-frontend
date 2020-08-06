@@ -23,39 +23,42 @@ const ProductCardDisplay = (props) => {
   //     });
   //   };
 
-  useEffect(() => {
-    setDisplayProduct();
-  }, []);
+  // useEffect(() => {
+  //   setDisplayProduct();
+  // }, []);
 
   const displayProduct = () => {
     products.map((product) => {
       console.log(product);
       return (
-        <div className='card' key={products[i].sku} id={products[i].sku}>
+        <div className='card' key={product.sku} id={product.sku}>
           {product.map((productProp) => {
+            console.log(productProp)
             switch (productProp) {
-              case name:
+              case "name":
                 console.log(productProp);
                 console.log(productProp.key);
-                <h5 className='card-header'>{name}</h5>;
+                <h5 className='card-header'>{product.name}</h5>;
                 break;
-              case stock:
-                <p className='card-text'>Stock: {stock[i]}</p>;
+              case "stock":
+                <p className='card-text'>Stock: {product.stock}</p>;
                 break;
-              case sku:
+              case "sku":
                 <p className='card-text'>
-                  <small>SKU: 00{products[i].sku}</small>
+                  <small>SKU: 00{product.sku}</small>
                 </p>;
+                break;
+              default:
                 break;
             }
           })}
           <button
             className='btn btn-primary'
             onClick={() => {
-              if (stock[i] >= 1) {
+              if (product.stock > 0) {
                 // Won't let user add item to cart if no stock is left
                 addToCart(i);
-                setToastBody(products[i].name);
+                setToastBody(product.name);
                 setShow(true);
               }
             }}
