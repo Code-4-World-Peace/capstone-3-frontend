@@ -83,7 +83,8 @@ const Inventory = (props) => {
                   <br />
                   {products[i].flavor}
                 </p>
-                <input className='card-text' value={products[i].stock} onChange={(e) => setInput(e.target.value)} />
+                <p className='card-text'>Current Stock: {products[i].stock}</p>
+                <input className='card-text' placeholder="Input new stock quantity" onChange={(e) => setInput(e.target.value)} />
                 <p className='card-text'>
                   <small>SKU: 00{products[i].sku}</small>
                 </p>
