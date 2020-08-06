@@ -28,7 +28,9 @@ const ProductCardDisplay = (props) => {
     // }, []);
 
     const displayProduct = () => {
-        return products.map((product) => {
+       return (
+       <div>
+           {products.map((product) => {
             console.log(product);
             return (
                 <div className='card' key={product.sku} id={product.sku}>
@@ -37,7 +39,7 @@ const ProductCardDisplay = (props) => {
                         switch (productProp) {
                             case "name":
                                 console.log(productProp);
-                                console.log(productProp.name);
+                                console.log(product.name);
                                 return <h5 className='card-header'>{product.name}</h5>;
 
                             case "stock":
@@ -51,7 +53,7 @@ const ProductCardDisplay = (props) => {
                             default:
                                 return '';
                         }
-                    }).join()}
+                    })}
                     <button
                         className='btn btn-primary'
                         onClick={() => {
@@ -67,7 +69,9 @@ const ProductCardDisplay = (props) => {
                     </button>
                 </div>
             );
-        }).join();
+        })}
+        </div>
+       )
     };
 
     //   setDisplayProduct();
