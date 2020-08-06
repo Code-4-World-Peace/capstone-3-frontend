@@ -4,11 +4,11 @@ import Button from 'react-bootstrap/Button';
 
 const ProductAddView = (props) => {
   const [productName, setProductName] = useState('');
-  
 
   return (
     <Form>
       <Form.Group controlId='formGridName'>
+        <br />
         <Form.Label>Product Name:</Form.Label>
         <Form.Control
           placeholder='Peppers!'
@@ -20,9 +20,7 @@ const ProductAddView = (props) => {
         variant='primary'
         type='submit'
         onClick={() => {
-          props.addProduct(
-            productName
-          );
+          props.addProduct(productName);
         }}
       >
         Submit
