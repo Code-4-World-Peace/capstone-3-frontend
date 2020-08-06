@@ -5,6 +5,7 @@ import ProductAddView from '../Components/ProductAddView';
 const Inventory = (props) => {
   const [products, setProducts] = useState([]);
   const [productView, setProductView] = useState(false);
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     getProducts();
@@ -34,15 +35,16 @@ const Inventory = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const updateProduct = (name, stock) => {
+  const updateProduct = (name, input) => {
     const params = {
-      stock: stock,
+      name: name,
+      stock: input,
     };
 
     axios
       .put(`http://localhost:8080/products/${name}`, params)
       .then((res) => {
-        setProducts(res.data);
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   };
@@ -81,7 +83,7 @@ const Inventory = (props) => {
                   <br />
                   {products[i].flavor}
                 </p>
-                <p className='card-text'>Stock: {products[i].stock}</p>
+                <input className='card-text' value={products[i].stock} onChange={(e)=>setInput(e.target.value)}/>
                 <p className='card-text'>
                   <small>SKU: 00{products[i].sku}</small>
                 </p>
