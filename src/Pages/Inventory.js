@@ -68,14 +68,14 @@ const Inventory = (props) => {
           return (
             <div className="card" key={products[i].sku} id={products[i].sku}>
               <h5 className="card-header">{products[i].name}</h5>
-              <img
+              {/* <img
                 src={products[i].image}
                 className="card-img-top"
                 alt={products[i].name}
                 style={{ maxWidth: "200px", margin: "auto" }}
-              />
+              /> */}
               <div className="card-body">
-                <h5 className="card-title">${products[i].price}</h5>
+                {/* <h5 className="card-title">${products[i].price}</h5> */}
                 <p className="card-text">
                   {products[i].description}
                   <br />
@@ -94,7 +94,7 @@ const Inventory = (props) => {
                   max="500"
                 />
                 <p className="card-text">
-                  <small>SKU: 00{products[i].sku}</small>
+                  <small>Serial No: 00{products[i].sku}</small>
                 </p>
                 <button
                   className="btn btn-primary"
@@ -110,7 +110,7 @@ const Inventory = (props) => {
                   Update Product
                 </button>
                 <p className="card-text">
-                  <small>Tags: {products[i].tag} </small>
+                  {/* <small>Tags: {products[i].tag} </small> */}
                 </p>
               </div>
             </div>
