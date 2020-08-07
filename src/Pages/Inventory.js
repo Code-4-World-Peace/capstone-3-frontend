@@ -113,6 +113,7 @@ const Inventory = (props) => {
                     }
 
                     document.getElementById(`${products[i].name}`).value = '';
+                    setInput(0);
                   }}
                 >
                   Update Product
